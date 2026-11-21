@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <!-- Aucune ressource externe, aucun appel réseau : le pseudo est lu dans le « # » du lien,
+         que le navigateur n'envoie jamais au serveur. -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#EDF1F4" />
+    <title>Invitation Veen</title>
+    <style>
+      :root {
+        --brume: #edf1f4;
+        --card: #ffffff;
+        --ink: #1c1b1a;
+        --muted: #5e6a73;
+        --line: #dde3e8;
+        --braise: #ff5a36;
+        --braise-strong: #d63b1a;
+        --on-braise: #ffffff;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px 16px;
+        background: var(--brume);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial,
+          sans-serif;
+        -webkit-text-size-adjust: 100%;
+      }
+      main {
+        width: 100%;
+        max-width: 420px;
+        background: var(--card);
+        border-radius: 18px;
+        padding: 32px 24px;
+        text-align: center;
+      }
+      .brand {
+        font-size: 40px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        color: var(--braise-strong);
+        margin: 0 0 24px;
+      }
+      h1 {
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: -0.4px;
+        line-height: 1.15;
+        margin: 0 0 24px;
+        overflow-wrap: anywhere;
+      }
+      .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        border-radius: 16px;
+        font-size: 17px;
+        font-weight: 700;
+        text-decoration: none;
+        margin-top: 12px;
+      }
+      .primary {
+        background: var(--braise);
+        color: var(--on-braise);
+      }
+      .primary:active {
+        opacity: 0.8;
+      }
+      .disabled {
+        background: var(--brume);
+        color: var(--muted);
+        border: 1px solid var(--line);
+      }
+      .hint {
+        font-size: 14px;
+        line-height: 1.4;
+        color: var(--muted);
+        margin: 24px 0 0;
+      }
+      [hidden] {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="brand">Veen</p>
+
+      <section id="invitation" hidden>
+        <h1 id="title"></h1>
+        <a id="open" class="button primary" href="veen://">Ouvrir dans Veen</a>
+        <span class="button disabled" role="link" aria-disabled="true">
+          App Store · Bientôt disponible
+        </span>
+        <p id="hint" class="hint"></p>
+      </section>
+
+      <section id="invalid" hidden>
+        <h1>Lien d’invitation incomplet</h1>
+        <p class="hint">Demande à ton ami de te renvoyer son lien d’invitation Veen.</p>
+      </section>
+    </main>
+
+    <script>
+      // Lien : https://veen-app.github.io/i/#<pseudo>. Mêmes règles qu'un pseudo Veen :
+      // 3 à 20 caractères, lettres sans accent, chiffres, point, tiret bas.
+      (function () {
+        var PSEUDO = /^[A-Za-z0-9._]{3,20}$/;
+
+        function readPseudo() {
+          var raw = window.location.hash.slice(1);
+          try {
+            raw = decodeURIComponent(raw);
+          } catch (e) {
+            return null;
+          }
+          raw = raw.trim().replace(/^@/, '');
+          return PSEUDO.test(raw) ? raw : null;
+        }
+
+        function render() {
+          var pseudo = readPseudo();
+          document.getElementById('invitation').hidden = pseudo === null;
+          document.getElementById('invalid').hidden = pseudo !== null;
+          if (pseudo === null) {
+            document.title = 'Invitation Veen';
+            return;
+          }
+          document.title = pseudo + ' t’invite sur Veen';
+          document.getElementById('title').textContent = pseudo + ' t’invite sur Veen';
+          document.getElementById('open').href = 'veen://ami/' + pseudo;
+          document.getElementById('hint').textContent =
+            'Après l’installation, cherche ' + pseudo + ' dans Groupes > Ajouter un ami.';
+        }
+
+        render();
+        window.addEventListener('hashchange', render);
+      })();
+    </script>
+  </body>
+</html>
