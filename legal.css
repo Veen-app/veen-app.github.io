@@ -1,0 +1,119 @@
+/* Pages légales et assistance de Veen (jalon 9.4). Identité « Braise » : fond Brume, texte blanc
+   sur l'orange. Aucune ressource externe. */
+:root {
+  --brume: #edf1f4;
+  --card: #ffffff;
+  --ink: #1c1b1a;
+  --muted: #5e6a73;
+  --line: #dde3e8;
+  --braise: #ff5a36;
+  --braise-strong: #d63b1a;
+  --on-braise: #ffffff;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 24px 16px 48px;
+  background: var(--brume);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-text-size-adjust: 100%;
+}
+header,
+main,
+footer {
+  max-width: 720px;
+  margin: 0 auto;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.brand {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--braise-strong);
+  text-decoration: none;
+}
+nav a {
+  color: var(--braise-strong);
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 12px;
+  font-size: 15px;
+}
+main {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 28px 22px;
+}
+h1 {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  line-height: 1.15;
+  margin: 0 0 4px;
+}
+h2 {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 28px 0 8px;
+}
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 18px 0 4px;
+}
+.updated {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0 0 20px;
+}
+a {
+  color: var(--braise-strong);
+}
+ul {
+  padding-left: 20px;
+}
+li {
+  margin: 4px 0;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+th,
+td {
+  text-align: left;
+  vertical-align: top;
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--line);
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 16px;
+  background: var(--braise);
+  color: var(--on-braise);
+  font-weight: 700;
+  text-decoration: none;
+}
+footer {
+  color: var(--muted);
+  font-size: 14px;
+  text-align: center;
+  margin-top: 20px;
+}
