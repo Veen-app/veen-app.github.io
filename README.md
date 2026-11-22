@@ -7,5 +7,8 @@ Pages web publiques de Veen, servies par GitHub Pages (branche `main`, racine du
   ressource externe, aucun appel réseau, aucune donnée personnelle. Le bouton « Ouvrir dans
   Veen » ouvre l'appli par `veen://ami/<pseudo>`.
 - `index.html` : page d'accueil minimale.
+- `confidentialite/`, `conditions/`, `assistance/` : textes légaux en français (jalon 9.4), qui
+  font foi ; traductions (jalon 10.7) sous `en/`, `de/`, `nl/` aux mêmes chemins dans chaque
+  langue : `privacy/`, `terms/`, `support/`. Nom de l'éditeur : `EDITOR_NAME` dans `legal.js`.
 
 Le code de l'appli est dans le dépôt privé `Veen-app/veen`.
