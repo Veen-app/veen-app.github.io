@@ -9,6 +9,6 @@ Pages web publiques de Veen, servies par GitHub Pages (branche `main`, racine du
 - `index.html` : page d'accueil minimale.
 - `confidentialite/`, `conditions/`, `assistance/` : textes légaux en français (jalon 9.4), qui
   font foi ; traductions (jalon 10.7) sous `en/`, `de/`, `nl/` aux mêmes chemins dans chaque
-  langue : `privacy/`, `terms/`, `support/`. Nom de l'éditeur : `EDITOR_NAME` dans `legal.js`.
+  langue : `privacy/`, `terms/`, `support/`. Nom de l'éditeur (Thomas LÖFFLER) écrit en dur dans chaque page (audit avant la bêta).
 
 Le code de l'appli est dans le dépôt privé `Veen-app/veen`.
